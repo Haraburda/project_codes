@@ -1,0 +1,190 @@
+food,1998,2004,2006,2008,education
+"Fruit, total",90.8,103.81,99.84,92.76,less_HS
+"Apples, total",17.97,21.07,20.07,21.82,less_HS
+Apples ,10.8,12.2,12.58,10.2,less_HS
+Apple juice1,7.17,9.25,8.02,11.25,less_HS
+Bananas,9.66,9.79,10.84,9.66,less_HS
+Berries,2.97,3.08,4.03,5.05,less_HS
+Grapes,4.02,5.42,6.64,7.42,less_HS
+Melons,4.39,4.99,3.63,3.74,less_HS
+"Oranges, total",29.91,34.74,31.75,25.17,less_HS
+Oranges ,3.16,4.65,4.7,3.32,less_HS
+Orange juice2,26.83,30.65,27.47,21.92,less_HS
+Other citrus fruits,6.44,5.77,4.57,4.33,less_HS
+Stone fruits,6.58,7.78,5.7,6.2,less_HS
+Tropical fruits,3.76,4.95,6.26,4.26,less_HS
+"Vegetables, total",119,108.7,112.08,112.61,less_HS
+"Brassica, total",7.44,7.03,5.26,6.94,less_HS
+Broccoli and cauliflower,2.86,2.7,1.55,2.91,less_HS
+Carrots,3.74,3.25,3.19,2.98,less_HS
+Celery,2.16,2.11,2.05,3.25,less_HS
+Cucumbers,1.31,1.39,1.39,0.98,less_HS
+Green peas,1.66,1.44,1.38,1.46,less_HS
+"Leafy vegetables, total",0.21,0.41,0.52,0.43,less_HS
+Lettuce,6.3,7.3,6.62,7.48,less_HS
+Onions,5.23,5.43,6.66,6.25,less_HS
+Peppers,3.93,3.85,4.74,4.73,less_HS
+Tomatoes,20.45,18.13,20.28,18.77,less_HS
+Sweet corn,6.78,4.15,4.08,6.02,less_HS
+Potatoes,38.3,36.97,35.37,36.36,less_HS
+Snap beans,3.33,3.06,2.82,3.07,less_HS
+"Legumes, dried",7.65,6.66,8.9,6.71,less_HS
+"Dairy, total",156.67,143.56,145.54,153.97,less_HS
+"Fluid milk, total3",108.5,95.71,94.38,99.41,less_HS
+"Fluid milk, 1-percent fat3",10.12,7.04,6.94,8.78,less_HS
+"Fluid milk, 2-percent fat3",34.14,35.03,28.84,36.87,less_HS
+"Fluid milk, skim3",13.5,7.94,11.68,9.69,less_HS
+"Fluid milk, whole3",43.2,36.38,36.49,32.95,less_HS
+Butter,1.76,1.86,2.07,2.26,less_HS
+Cheese,9.04,8.81,10.62,12.27,less_HS
+Yogurt,1.64,2.79,3.92,4.87,less_HS
+"Dairy, other",3.36,6.07,8.11,7.37,less_HS
+"Meat, poultry, and fish, total",101.24,100.79,107.44,102.77,less_HS
+"Meat, total",61.58,59.95,67.44,65.25,less_HS
+Beef,34.31,32.04,37.84,36.06,less_HS
+Pork,27.59,28.94,29.44,29.66,less_HS
+"Poultry, total",34.19,30.48,33.85,30.74,less_HS
+Chicken,26.03,25.61,28.36,24.75,less_HS
+Turkey,8.3,4.89,5.67,6.18,less_HS
+Finfish and shellfish,5.72,8.96,6.28,6.96,less_HS
+Eggs4,17.18,17.8,18.02,18.6,less_HS
+"Grains, total",94.23,92.94,95.26,100.15,less_HS
+Corn flour,11.53,15.56,17.8,15.37,less_HS
+Oat flour,2.15,2.48,2.01,2.34,less_HS
+"Rice, dried",9.87,11.38,8.89,9.86,less_HS
+Wheat flour,64.82,56.81,59.69,64.07,less_HS
+"Fat and oils, total",30.44,37.58,39.05,43.37,less_HS
+Margarine,4.36,2.19,1.73,2.05,less_HS
+Salad and cooking oils,11.13,15.14,17.56,21.43,less_HS
+Shortening,6.91,8.22,7.54,6.95,less_HS
+"Oils, other",0.23,0.9,1.12,1.06,less_HS
+Caloric sweeteners,57.98,60.37,65.18,61.12,less_HS
+"Nuts, total",4.03,3.62,5.49,4.31,less_HS
+Peanuts,3.1,2.61,4.07,3.12,less_HS
+Tree nuts,0.89,0.99,1.44,1.2,less_HS
+"Fruit, total",86.01,85.95,86.26,94.92,HS
+"Apples, total",15.27,16.72,17.07,21.54,HS
+Apples ,11.14,11.08,8.61,10.53,HS
+Apple juice1,4.77,6.35,8.41,10.54,HS
+Bananas,10.29,9.77,9.28,9.98,HS
+Berries,3.01,4.07,4.44,6.37,HS
+Grapes,4.12,6.53,5.82,6.89,HS
+Melons,4.55,3.06,3.73,4.38,HS
+"Oranges, total",28.42,28.65,29.79,26.67,HS
+Oranges ,3.69,3.54,3.01,1.89,HS
+Orange juice2,25.07,25.48,26.86,24.75,HS
+Other citrus fruits,5.29,2.86,2.37,3.06,HS
+Stone fruits,5.99,7.26,6.2,7.73,HS
+Tropical fruits,3.15,2.9,2.65,3.61,HS
+"Vegetables, total",122.88,115.12,116.53,121.11,HS
+"Brassica, total",6.76,6.23,5.77,7.2,HS
+Broccoli and cauliflower,3.13,2.78,2.23,3.61,HS
+Carrots,4.21,2.83,3.53,2.7,HS
+Celery,2.1,2.43,2.28,2.23,HS
+Cucumbers,1.58,1.75,1.51,2.18,HS
+Green peas,1.73,1.35,1.75,1.56,HS
+"Leafy vegetables, total",0.27,0.54,0.61,0.59,HS
+Lettuce,8.23,8.95,8.77,9.24,HS
+Onions,4.89,5.68,5.71,6.09,HS
+Peppers,3.93,3.9,4.2,5.16,HS
+Tomatoes,22.12,20.14,19.81,20.88,HS
+Sweet corn,7.5,6.35,7.21,6.48,HS
+Potatoes,38.59,36.84,37.6,36.61,HS
+Snap beans,3.05,2.96,2.58,3.15,HS
+"Legumes, dried",4.65,4.1,2.96,3.96,HS
+"Dairy, total",144.9,164.87,150.41,144.04,HS
+"Fluid milk, total3",95.98,107.53,97.39,90.4,HS
+"Fluid milk, 1-percent fat3",10.26,15.09,10.68,11.54,HS
+"Fluid milk, 2-percent fat3",32.11,34.83,34.27,28.62,HS
+"Fluid milk, skim3",15.3,13.33,14.35,13.88,HS
+"Fluid milk, whole3",30.71,33.66,26.23,24.91,HS
+Butter,2.1,2.07,2.45,2.49,HS
+Cheese,10.32,11.6,11.75,12,HS
+Yogurt,3.04,3.49,3.31,6.07,HS
+"Dairy, other",4.01,9.02,8.28,8.32,HS
+"Meat, poultry, and fish, total",100.54,98.54,96.95,101.08,HS
+"Meat, total",63.95,62.54,58.65,59.89,HS
+Beef,34.33,32.75,33.65,33.57,HS
+Pork,30.48,30.8,24.42,26.3,HS
+"Poultry, total",30.27,30.24,29.61,34.16,HS
+Chicken,24.12,24.77,23.81,28.38,HS
+Turkey,6.36,5.56,6.21,5.88,HS
+Finfish and shellfish,6.09,5.91,7.59,7.02,HS
+Eggs4,15.2,15.63,12.77,13.98,HS
+"Grains, total",90.75,88.24,87.95,92.62,HS
+Corn flour,6.99,8.58,8.57,9.87,HS
+Oat flour,2.1,2.62,2.41,2.35,HS
+"Rice, dried",6.8,5.95,7.67,7.65,HS
+Wheat flour,69.67,63.3,61.87,64.9,HS
+"Fat and oils, total",30.01,41.4,40.84,43.5,HS
+Margarine,4.59,2.74,1.98,2.34,HS
+Salad and cooking oils,11.16,15.98,17.93,21.29,HS
+Shortening,6.47,9.41,8.28,6.54,HS
+"Oils, other",0.27,1.03,1.48,0.95,HS
+Caloric sweeteners,55.43,64.83,66.45,68.73,HS
+"Nuts, total",5.06,8.12,7.5,7.15,HS
+Peanuts,3.86,5.67,5.46,5.05,HS
+Tree nuts,1.17,2.44,2.05,2.13,HS
+"Fruit, total",126.84,110.54,113.5,108.52,college
+"Apples, total",22.45,19.98,21,21.86,college
+Apples ,15.13,13.53,12.89,12.61,college
+Apple juice1,7.85,7.4,8.59,8.31,college
+Bananas,13.63,11.8,10.49,11.46,college
+Berries,5.34,6.4,7.45,6.6,college
+Grapes,7.58,7.09,8.69,9.15,college
+Melons,4.87,4.56,4.93,4.61,college
+"Oranges, total",42.56,35.44,37.53,30.97,college
+Oranges ,4.62,2.72,3.04,2.78,college
+Orange juice2,38.1,32.58,34.42,28.19,college
+Other citrus fruits,9.86,6.91,5.21,6.38,college
+Stone fruits,8.74,7.62,7.52,7.76,college
+Tropical fruits,4.86,4.51,3.56,3.96,college
+"Vegetables, total",125.73,121.45,118.48,119.68,college
+"Brassica, total",7.65,7.68,8.66,8.37,college
+Broccoli and cauliflower,3.94,4.08,4.91,4.58,college
+Carrots,5.91,4.34,3.69,4.15,college
+Celery,2.81,2.18,2.36,2.56,college
+Cucumbers,1.53,1.72,2,1.62,college
+Green peas,1.9,1.63,1.11,1.6,college
+"Leafy vegetables, total",0.37,0.77,0.93,0.72,college
+Lettuce,10.49,12.02,10.77,9.47,college
+Onions,4.94,5.24,4.98,6.05,college
+Peppers,4.42,4.33,4.72,5.69,college
+Tomatoes,23.06,20.13,21.59,21.68,college
+Sweet corn,6.69,6.23,6.75,4.94,college
+Potatoes,32.24,32.63,27.42,29.75,college
+Snap beans,3.09,3.1,3.37,3.44,college
+"Legumes, dried",4.48,3.61,3.47,3.83,college
+"Dairy, total",157.22,157.51,168.19,165.48,college
+"Fluid milk, total3",101.12,97.47,103.55,101.11,college
+"Fluid milk, 1-percent fat3",12.83,13.12,15.02,14.57,college
+"Fluid milk, 2-percent fat3",32.03,28.39,30.98,28.37,college
+"Fluid milk, skim3",23.18,22.03,19.71,23.26,college
+"Fluid milk, whole3",22.23,21.32,23.82,20.01,college
+Butter,2.04,2.39,2.56,2.55,college
+Cheese,11.5,13.17,13.8,13.84,college
+Yogurt,5.63,7.23,9.96,9.72,college
+"Dairy, other",4.38,9.6,9.02,10.61,college
+"Meat, poultry, and fish, total",85.88,92.88,92.42,94.37,college
+"Meat, total",47.28,51.31,48.4,49.68,college
+Beef,26.97,27.92,26.49,26.8,college
+Pork,20.15,23.45,21.88,22.74,college
+"Poultry, total",32.48,33.95,33.86,35.98,college
+Chicken,25.14,25.91,26.99,27.88,college
+Turkey,7.7,8.25,7.38,8.76,college
+Finfish and shellfish,6.08,7.14,8.59,7.92,college
+Eggs4,11.33,14.66,14.69,13.32,college
+"Grains, total",97.57,89.94,88.81,96.9,college
+Corn flour,6.84,7.84,7.31,8.82,college
+Oat flour,3.03,2.92,3.01,3.22,college
+"Rice, dried",8.36,8.82,9.49,9.75,college
+Wheat flour,72.57,62.37,60.16,65.49,college
+"Fat and oils, total",28.88,37.55,38.09,40.58,college
+Margarine,4.39,2.41,2.04,2.16,college
+Salad and cooking oils,11.02,14.74,16.67,20.36,college
+Shortening,6.1,8.99,6.73,5.33,college
+"Oils, other",0.26,0.94,1.15,1.08,college
+Caloric sweeteners,50.6,54.49,51.6,51.83,college
+"Nuts, total",6.67,10.47,9.98,11.25,college
+Peanuts,4.69,6.43,6.81,6.87,college
+Tree nuts,2.1,4.14,3.13,4.33,college
