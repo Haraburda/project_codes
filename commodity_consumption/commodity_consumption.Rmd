@@ -1,0 +1,471 @@
+---
+title: "Commodity Consuption"
+author: "Scott Haraburda"
+date: "July 28, 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+#####Make sure you load any required packages.
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+
+## US Commodity Consumption by Population Characteristics.
+
+The Economic Research Service of the United States Department of Agriculture tracks 
+the supply of food available for consumption in the United States andexamines consumer 
+food preferences by consumers’ age, income, region, race/ethnicity,and place where 
+food is obtained, as well as by food/commodity categories and othercharacteristics.
+
+Descriptive statistics of this commodity consumption help inform producers about 
+who consumes their commodities, how and where their commodities areconsumed, 
+and how much is consumed.
+
+This data comes from four national food intake surveys conducted between 1994 and 
+2008 to disaggregate 63 loss-adjusted food availability commodities by food 
+source—food at home and food away from home—for the Nation as a whole and by 15 
+demographic characteristics. This data provides a comprehensive picture of the 
+Nation’s eating habits and support the coordinated research program outlined in 
+the National Nutrition Monitoring and Related Research Act of 1990. The URL link 
+to the report is: https://www.ers.usda.gov/webdocs/publications/81818/err-221.pdf?v=2841.4
+
+## Data Sources
+
+The data is stored in nine data sets, in MS Excel format, which can be retrieved 
+from the following URL link: https://www.ers.usda.gov/data-products/commodity-consumption-by-population-characteristics.aspx This is the list of eight data sets:
+
+1. Annual U.S. per capita loss-adjusted food-at-home availability: total, children, and adults
+2. Annual U.S. per capita loss-adjusted food-at-home availability:boys, girls, men, and women
+3. Annual, per capita loss-adjusted food-at-home availability: lowand high income
+4. Annual, per capita loss-adjusted food-at-home availability: adulteducational achievement
+5. Annual U.S. per capita loss-adjusted food-away-from-home avail-ability: total, children, and adults
+6. Annual, per capita loss-adjusted food-away-from-home availabil-ity: boys, girls, men, and women
+7. Annual, per capita loss-adjusted food-away-from-home availabil-ity: low and high income
+8. Annual, per capita loss-adjusted food-away-from-home availabil-ity: adult educational achievement
+
+## Description of the Data
+
+Please provide specific details about your data.
+ 
+* If the data covers a timespan, what is the time period? <span style="color: red;">This includes four timeframes: 1994-1998, 2003-2004, 2005-2006, and 2007-2008).</span>
+* If the data covers a geographical location, what geographical location(s)? <span style="color: red;">This does not cover a geographical location.</span>
+* If the data is about a business, political, or non-governmental entity or activity, which entities or activities does it cover? For example is the data about economics, schools, politics, sports, or something else? <span style="color: red;">This data comes from the U.S. Department of Agriculture and is about the consumption of food within the United States.</span>
+* What characteristics are captured by the data? For example, if your data is about cities, what characteristics of the cities are captured in the data? Population, crime rates, economic measures, business activity, traffic? <span style="color: red;">These include the following data:</span>
+
+* Assuming your data is rectangular (like a spreadsheet), how many rows and columns are in the dataset? If your data is not rectangular, how are you going to create a "tidy" dataset from these data? <span style="color: red;">The data is not tidy and will require significant data wrangling to convert to a "tidy" dataset.  First, there are nine separate spreadsheet files, each with different sets of population characteristics in four timeperiod as columns. The rows include different types of fruit, vegetables, dairy, meat, grains, fats/oils, and nuts, with a separate row for totals in each category. </span>
+
+
+## Import Your Data
+
+The following is a snapshot of the first Excel file, the one for food away from home by education level.
+
+
+```{r image1,fig.align="center", echo=FALSE}
+####Add Image of data
+knitr::include_graphics("FHA_data.png")
+
+```
+
+The following is a snapshot of the Excel file partially wrangled from wide to long format, converted to a *.CSV file.
+
+
+```{r image2,fig.align="center", echo=FALSE}
+####Add Image of data
+knitr::include_graphics("FHA_data_csv.png")
+
+```
+
+In the following code hunk, import your data. 
+
+```{r data_import, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ggcorrplot)
+library(tm)
+library(gganimate)
+library(gifski)
+library(plotly)
+library(lubridate)
+data1 <- read.csv("FAFH_education.csv", stringsAsFactors = TRUE, header=TRUE)
+data1AH <- read.csv("FAH_education.csv", stringsAsFactors = TRUE, header=TRUE)
+data2 <- read.csv("FAFH_gender.csv", stringsAsFactors = TRUE, header=TRUE)
+data2AH <- read.csv("FAH_gender.csv", stringsAsFactors = TRUE, header=TRUE)
+data3 <- read.csv("FAFH_income.csv", stringsAsFactors = TRUE, header=TRUE)
+data3AH <- read.csv("FAH_income.csv", stringsAsFactors = TRUE, header=TRUE)
+data4 <- read.csv("FAFH_total.csv", stringsAsFactors = TRUE, header=TRUE)
+data4AH <- read.csv("FAH_total.csv", stringsAsFactors = TRUE, header=TRUE)
+```
+
+
+## Plot 1 (Consumption by Education away from Home)
+
+For my first two figures, I created a correlation plot of the three education factors (non-HS, HS, college) with the eight food categories (fruit, vegetables, dairy, meat, grains, fats/oils, nuts, and candy/sweets). From this plot, there is a strong positive correlation between consumption of vegetables and quantity.  Those who consume more vegetables consume more overall from home.
+
+```{r Plot_1, message=FALSE}
+# create a data wrangling function to transform data
+wrangle1 <- function(A, B){
+  df <- A
+  df$year1 <- as.Date(paste(1998,1,1,sep="-"))
+  df$year2 <- as.Date(paste(2004,1,1,sep="-"))
+  df$year3 <- as.Date(paste(2006,1,1,sep="-"))
+  df$year4 <- as.Date(paste(2008,1,1,sep="-"))
+  C <- df[, c("food", "X1998", "year1", B)]
+  colnames(C)[2] <- "quantity"
+  colnames(C)[3] <- "year"
+  D <- df[, c("food", "X2004", "year2", B)]
+  colnames(D)[2] <- "quantity"
+  colnames(D)[3] <- "year"
+  E <- df[, c("food", "X2006", "year3", B)]
+  colnames(E)[2] <- "quantity"
+  colnames(E)[3] <- "year"
+  G <- df[, c("food", "X2008", "year4", B)]
+  colnames(G)[2] <- "quantity"
+  colnames(G)[3] <- "year"
+  df <- rbind(C, D, E, G)
+  A <- df
+}
+
+food1 <- function(A){
+  df <- A
+  df <- df %>%
+  filter(str_detect(food, 'total') | 
+           str_detect(food, 'sweeteners')) %>%
+  filter(!str_detect(food, "Apples, total") &
+           !str_detect(food, "Oranges, total") &
+           !str_detect(food, "Brassica, total") &
+           !str_detect(food, "Leafy vegetables, total") &
+           !str_detect(food, "Fluid milk") &
+           !str_detect(food, "Meat, poultry") &
+           !str_detect(food, "Poultry, total"))
+  df$food <- df$food %>%
+    as.character() %>%
+    str_replace_all(", total", "") %>%
+    str_replace_all("Caloric sweeteners", "Candy and sweets") %>%
+    removeNumbers() %>%
+    as.factor()
+  A <- df
+}
+
+data1 <- wrangle1(data1, "education")
+data1AH <- wrangle1(data1AH, "education")
+total1 <- food1(data1)
+total1AH <- food1(data1AH)
+
+model.matrix(~0+., data=total1) %>% 
+  cor(use="pairwise.complete.obs") %>% 
+  ggcorrplot(show.diag = F, type="lower", lab=TRUE, lab_size=2) +
+  labs(title = "Consumption Correlation Matrix (away from Home)",
+       subtitle = "education level has no impact upon consumption",
+       caption = "Data source: Economic Research Service, United States Department of Agriculture")
+```
+
+## Plot 2 (Consumption by Education at Home)
+
+From this plot, ther is a strong positive correlation between consumption of dairy and quantity, and a strong negative correlation between consumption of nuts and quantity.  Those who consume more dairy or less nuts consume more overall at home.
+
+```{r Plot_2, message=FALSE, warning=FALSE}
+model.matrix(~0+., data=total1AH) %>% 
+  cor(use="pairwise.complete.obs") %>% 
+  ggcorrplot(show.diag = F, type="lower", lab=TRUE, lab_size=2) +
+  labs(title = "Consumption Correlation Matrix (at home)",
+       subtitle = "education level has no impact upon consumption",
+       caption = "Data source: Economic Research Service, United States Department of Agriculture")
+
+data1$group <- as.factor("Away From Home")
+data1AH$group <- as.factor("At Home")
+data1total <- rbind(data1, data1AH)
+
+```
+
+## Plot 3 (Consumption by gender away from Home)
+
+For my next set of figures, these are a line plot of the quantity <span style="color: MediumSeaGreen;">(y-axis)</span> of the the eight food categories (fruit, vegetables, dairy, meat, grains, fats/oils, nuts, and candy/sweets) quantities <span style="color: MediumSeaGreen;">(x-axis)</span> for each of the four gender factors (boys, girls, men, women) groups. From this plot, boys consume more dairy than others, nearly twice that of men.
+
+
+```{r plot_3, message=FALSE, warning=FALSE}
+data2 <- wrangle1(data2, "gender")
+data2AH <- wrangle1(data2AH, "gender")
+total2 <- food1(data2)
+
+food2 <- function(A){
+  df <- A
+  dfb <- df %>%
+    filter(gender == "boys") %>%
+    group_by(food, gender) %>%
+    summarize(perc = sum(quantity))
+  dfb$perc <- 100*dfb$perc/sum(dfb$perc)
+  dfc <- df %>%
+    filter(gender == "girls") %>%
+    group_by(food, gender) %>%
+    summarize(perc = sum(quantity))
+  dfc$perc <- 100*dfc$perc/sum(dfc$perc)
+  dfd <- df %>%
+    filter(gender == "men") %>%
+    group_by(food, gender) %>%
+    summarize(perc = sum(quantity))
+  dfd$perc <- 100*dfd$perc/sum(dfd$perc)
+  dfe <- df %>%
+    filter(gender == "women") %>%
+    group_by(food, gender) %>%
+    summarize(perc = sum(quantity))
+  dfe$perc <- 100*dfe$perc/sum(dfe$perc)
+  A <- dplyr::bind_rows(dfb, dfc, dfd, dfe)
+}
+
+total2f <- food2(total2)
+
+ggplot(total2f, aes(food, perc, group=gender, color=gender)) +
+  geom_line() +
+  scale_color_manual(values = c("blue", "orange", "black", "red")) +
+  ggplot2::annotate("text", x=2.5, y=30, label="boys", color="blue", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=2, y=20, label="girls", color="orange", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=2, y=15, label="women", color="red", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=2, y=11, label="men", color="black", size=5,
+                    fontface = "bold") +
+  theme(panel.background = element_rect(fill='transparent'),
+        plot.title = element_text(face = "bold"),
+        axis.title.y = element_text(angle = 0, vjust = 1, face = "bold"),
+        axis.text.y = element_text(face = "bold"),
+        axis.text.x = element_text(face = "bold")) +
+  labs(title="Consumption by Gender (away from home)",
+       x="", y="percent", subtitle = "children consume more dairy than twice that of adults",
+       caption = "Data source: Economic Research Service, United States Department of Agriculture") +
+  guides(color = "none")
+
+
+```
+
+## Plot 4 (Consumption by gender at Home)
+
+From this plot, girls consume nearly as much a boys at home.  Also, compared to the previous plot, both men and women consume much more dairy at home than away from it.
+
+```{r plot_4, message=FALSE, warning=FALSE}
+total2AH <- food1(data2AH)
+
+total2AHf <- food2(total2AH)
+
+ggplot(total2AHf, aes(food, perc, group=gender, color=gender)) +
+  geom_line() +
+  scale_color_manual(values = c("blue", "orange", "black", "red")) +
+  ggplot2::annotate("text", x=2, y=37, label="boys", color="blue", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=2.4, y=33, label="girls", color="orange", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=2.6, y=24, label="women", color="red", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=2, y=19, label="men", color="black", size=5,
+                    fontface = "bold") +
+  theme(panel.background = element_rect(fill='transparent'),
+        plot.title = element_text(face = "bold"),
+        axis.title.y = element_text(angle = 0, vjust = 1, face = "bold"),
+        axis.text.y = element_text(face = "bold"),
+        axis.text.x = element_text(face = "bold")) +
+  labs(title="UConsumption by Gender (at home)",
+       x="", y="percent", subtitle = "children consume more dairy about 50% more than adults",
+       caption = "Data source: Economic Research Service, United States Department of Agriculture") +
+  guides(color = "none")
+
+```
+
+## Plot 5 (Consumption by Income away from Home)
+
+For the next two figures, I will display an interactive time-series line-plot for the eight food categories (fruit, vegetables, dairy, meat, grains, fats/oils, nuts, and candy/sweets) quanitities <span style="color: MediumSeaGreen;">(y-axis)</span> by year  <span style="color: MediumSeaGreen;">(x-axis)</span> for each of the two income levels (below and above the poverty level). From this interactive plot, low income people consume more milk and juice than others, while consuming the least amount of yogurt, nuts, and lettuce.
+
+```{r plot_5, message=FALSE, warning=FALSE}
+data3 <- wrangle1(data3, "income")
+data3AH <- wrangle1(data3AH, "income")
+
+food3 <- function(A){
+  total <- A %>%
+    filter(!str_detect(food, 'total'))
+  total$food <- total$food %>%
+    as.character() %>%
+    str_replace_all("1-percent", "one-percent") %>%
+    str_replace_all("2-percent", "two-percent") %>%
+    removeNumbers() %>%
+    as.factor()
+  A <- total
+}
+data3a <- food3(data3)
+data3a$year1 <- as.factor(year(data3a$year))
+
+data3ai <- subset(data3a, income == "high")
+data3al <- subset(data3a, income == "low")
+colnames(data3ai)[2] <- "high"
+colnames(data3al)[2] <- "low"
+data3ai <- data3ai[-c(3,4)]
+data3al <- data3al[-c(3,4)]
+# data3ai$low <- data3al$low
+data3ai <- merge(data3ai, data3al, by=c("food", "year1"))
+data3ai$perc <- 100*data3ai$low/data3ai$high
+
+data3ai$food <- factor(data3ai$food, levels = unique(data3ai$food[order(data3ai$perc)]))
+
+p <- ggplot(data3ai, aes(x=food, y=perc, group= year1, color=year1))+
+    geom_line() +
+    geom_hline(yintercept = 100, linetype="dotted") +
+    scale_color_discrete() +
+    coord_flip() +
+    theme(panel.background = element_rect(fill='transparent'),
+          plot.title = element_text(face = "bold"),
+          axis.title.y = element_text(angle = 0, vjust = 1, face = "bold"),
+          axis.text.y = element_text(face = "bold"),
+          axis.text.x = element_text(face = "bold"),
+          legend.position = c(.9,.5)) +
+    labs(title="Consumption by Year (away from home)",
+         x="", y="Percentage of Low/High", 
+         subtitle = "low income people consume more milk and juice than others",
+         caption = "Data source: Economic Research Service, United States Department of Agriculture")+
+    guides(color=guide_legend("Year"))
+
+ggplotly(p) %>%
+  layout(title = list(text = paste0('<b>',
+                                    'Consumption by Year (away from home)',
+                                    '</b>',
+                                    '<br>',
+                                    '<sup>',
+                                    'low income people consume more milk and juice than others',
+                                    '</sup>')))
+
+```
+
+## Plot 6 (Consumption by Income at Home)
+
+From this interactive plot, low income people consume more legumes, rice, and eggs than others, while consuming the least amount of nuts, yogurt, broccoli and cauliflower.
+
+```{r plot_6, message=FALSE, warning=FALSE}
+data3b <- food3(data3AH)
+data3b$year1 <- as.factor(year(data3b$year))
+
+data3bi <- subset(data3b, income == "high")
+data3bl <- subset(data3b, income == "low")
+colnames(data3bi)[2] <- "high"
+colnames(data3bl)[2] <- "low"
+data3bi <- data3bi[-c(3,4)]
+data3bl <- data3bl[-c(3,4)]
+data3bi <- merge(data3bi, data3bl, by=c("food", "year1"))
+data3bi$perc <- 100*data3bi$low/data3bi$high
+
+data3bi$food <- factor(data3bi$food, levels = unique(data3bi$food[order(data3bi$perc)]))
+
+p <- ggplot(data3bi, aes(x=food, y=perc, group= year1, color=year1))+
+    geom_line() +
+    geom_hline(yintercept = 100, linetype="dotted") +
+    scale_color_discrete() +
+    coord_flip() +
+    theme(panel.background = element_rect(fill='transparent'),
+          plot.title = element_text(face = "bold"),
+          axis.title.y = element_text(angle = 0, vjust = 1, face = "bold"),
+          axis.text.y = element_text(face = "bold"),
+          axis.text.x = element_text(face = "bold"),
+          legend.position = c(.9,.5)) +
+    labs(title="Consumption by Year (at home)",
+         x="", y="Percentage of Low/High", 
+         subtitle = "low income people consume more legumes, rice, and eggs than others",
+         caption = "Data source: Economic Research Service, United States Department of Agriculture")+
+    guides(color=guide_legend("Year"))
+
+ggplotly(p) %>%
+  layout(title = list(text = paste0('<b>',
+                                    'Consumption by Year (at home)',
+                                    '</b>',
+                                    '<br>',
+                                    '<sup>',
+                                    'low income people consume more legumes, rice, and eggs than others',
+                                    '</sup>')))
+
+```
+
+## Plot 7 (Consumption by Population away from Home)
+
+For my last two figures, using different shades of green, I created a bar chart plot of the two population groups factors (children and adults) and total population with the eight food categories (fruit, vegetables, dairy, meat, grains, fats/oils, nuts, and candy/sweets). From this plot, children eat more sweets, dairy, and fruit than adults when away from home.
+
+```{r plot_7, message=FALSE, warning=FALSE}
+data4 <- wrangle1(data4, "population")
+data4AH <- wrangle1(data4AH, "population")
+total4 <- food1(data4)
+total4AH <- food1(data4AH)
+
+food4 <- function(A){
+  df <- A
+  dfb <- df %>%
+    filter(population == "total") %>%
+    group_by(food, population) %>%
+    summarize(perc = sum(quantity))
+  dfb$perc <- 100*dfb$perc/sum(dfb$perc)
+  dfc <- df %>%
+    filter(population == "adults") %>%
+    group_by(food, population) %>%
+    summarize(perc = sum(quantity))
+  dfc$perc <- 100*dfc$perc/sum(dfc$perc)
+  dfd <- df %>%
+    filter(population == "children") %>%
+    group_by(food, population) %>%
+    summarize(perc = sum(quantity))
+  dfd$perc <- 100*dfd$perc/sum(dfd$perc)
+  A <- dplyr::bind_rows(dfb, dfc, dfd)
+}
+
+total4f <- food4(total4)
+total4AHf <- food4(total4AH)
+
+ggplot(total4f, aes(food, perc, fill=population)) +
+  geom_bar(position='dodge', stat='identity') +
+  scale_fill_manual(values = c("greenyellow", "green2", "green4")) +
+  ggplot2::annotate("text", x=4, y=20, label="Adults", color="greenyellow", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=5, y=25, label="Children", color="green2", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=6, y=20, label="Total", color="green4", size=5,
+                    fontface = "bold") +
+  geom_segment(aes(x=4.4, xend=4.7, y=19, yend=18), linetype=2, color = "greenyellow") +
+  geom_segment(aes(x=5, xend=5, y=23.5, yend=16), linetype=2, color = "green2") +
+  geom_segment(aes(x=5.7, xend=5.4, y=19, yend=17.5), linetype=2, color = "green4") +
+  theme(panel.background = element_rect(fill='transparent'),
+        plot.title = element_text(face = "bold"),
+        axis.title.y = element_text(angle = 0, vjust = 1, face = "bold"),
+        axis.text.y = element_text(face = "bold"),
+        axis.text.x = element_text(face = "bold")) +
+  labs(title="Consumption by Population (away from home)",
+       x="", y="percent", subtitle = "children eat more sweets, dairy, and fruit than adults",
+       caption = "Data source: Economic Research Service, United States Department of Agriculture") +
+  guides(fill = "none")
+
+```
+
+## Plot 8 (Consumption by Population at Home)
+
+From this plot, children continue to eat more sweets, dairy, and fruit than adults when away from home.
+
+```{r plot_8, message=FALSE, warning=FALSE}
+
+ggplot(total4AHf, aes(food, perc, fill=population)) +
+  geom_bar(position='dodge', stat='identity') +
+  scale_fill_manual(values = c("greenyellow", "green2", "green4")) +
+  ggplot2::annotate("text", x=3, y=20, label="Adults", color="greenyellow", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=4, y=25, label="Children", color="green2", size=5,
+                    fontface = "bold") +
+  ggplot2::annotate("text", x=5, y=20, label="Total", color="green4", size=5,
+                    fontface = "bold") +
+  geom_segment(aes(x=3.4, xend=3.7, y=19, yend=18), linetype=2, color = "greenyellow") +
+  geom_segment(aes(x=4, xend=4, y=23.5, yend=16), linetype=2, color = "green2") +
+  geom_segment(aes(x=4.7, xend=4.4, y=19, yend=17.5), linetype=2, color = "green4") +
+  theme(panel.background = element_rect(fill='transparent'),
+        plot.title = element_text(face = "bold"),
+        axis.title.y = element_text(angle = 0, vjust = 1, face = "bold"),
+        axis.text.y = element_text(face = "bold"),
+        axis.text.x = element_text(face = "bold")) +
+  labs(title="Consumption by Population (at home)",
+       x="", y="percent", subtitle = "children eat more sweets, dairy, and fruit than adults",
+       caption = "Data source: Economic Research Service, United States Department of Agriculture") +
+  guides(fill = "none")
+
+```
+
