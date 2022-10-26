@@ -1,0 +1,127 @@
+food,1998,2004,2006,2008,income
+"Fruit, total",94.83,111.14,108.09,103.66,low
+"Apples, total",22.21,30.8,28.07,27.74,low
+Apples ,10.62,12.36,11.47,10.71,low
+Apple juice1,11.08,17.4,15.92,17.12,low
+Bananas,8.91,8.98,9.79,8.92,low
+Berries,2.48,3.75,4.58,4.89,low
+Grapes,5.95,6.84,7.68,8.17,low
+Melons,3.06,2.99,3.81,3.55,low
+"Oranges, total",33.92,37.93,35.11,29.92,low
+Oranges ,3.39,4.21,4.03,2.84,low
+Orange juice2,30.57,34.03,31.28,27.1,low
+Other citrus fruits,3.87,4.11,3.22,4.06,low
+Stone fruits,4.94,5.5,5.3,5.22,low
+Tropical fruits,5.1,5.41,5.29,5.36,low
+"Vegetables, total",108.96,105.89,106.34,101.65,low
+"Brassica, total",5.68,5.2,5.23,5.43,low
+Broccoli and cauliflower,2.21,2.32,1.92,2.62,low
+Carrots,3.58,3.17,3.14,2.85,low
+Celery,1.88,1.87,2.03,2.06,low
+Cucumbers,1.22,1.29,1.2,1.57,low
+Green peas,1.25,1.33,1.17,1.34,low
+"Leafy vegetables, total",0.18,0.34,0.52,0.44,low
+Lettuce,5,5.95,6.43,6.49,low
+Onions,4.41,4.73,5.25,5.03,low
+Peppers,3.32,3.04,3.83,4.1,low
+Tomatoes,20.66,18.65,20.11,18.67,low
+Sweet corn,6.59,6.17,5.23,5.15,low
+Potatoes,35.71,36.82,33.16,30.72,low
+Snap beans,2.78,2.26,2.79,2.67,low
+"Legumes, dried",6.31,4.52,5.39,4.26,low
+"Dairy, total",169.26,174.33,174.88,167.84,low
+"Fluid milk, total3",118.41,116.67,116.21,110.47,low
+"Fluid milk, 1-percent fat3",8.16,9.03,8.97,11.5,low
+"Fluid milk, 2-percent fat3",35.6,36.7,36.55,39.09,low
+"Fluid milk, skim3",11.18,9.8,11.69,10.02,low
+"Fluid milk, whole3",56.96,49.68,46.95,37.69,low
+Butter,1.64,1.9,2.05,2.12,low
+Cheese,9.47,10.1,11.06,10.87,low
+Yogurt,1.88,4.08,5.05,5.97,low
+"Dairy, other",2.85,6.74,6.93,7.26,low
+"Meat, poultry, and fish, total",91.93,89.42,94.62,89.1,low
+"Meat, total",57.94,52.43,55.63,50.48,low
+Beef,31.82,29.46,31.83,28.19,low
+Pork,26.37,23.13,23.9,22.77,low
+"Poultry, total",29.11,31.28,32.12,32.88,low
+Chicken,23.32,25.98,26.64,27.19,low
+Turkey,5.86,5.35,5.72,5.82,low
+Finfish and shellfish,5.07,5.78,6.52,5.84,low
+Eggs4,16.64,15.6,15.06,14.56,low
+"Grains, total",93.59,90.24,91.63,95.38,low
+Corn flour,11.73,12.31,15.08,12.94,low
+Oat flour,2.64,2.25,2.12,2.17,low
+"Rice, dried",10.58,10.35,10.31,9.81,low
+Wheat flour,62.5,58.32,57.01,62.45,low
+"Fat and oils, total",28.44,36.84,37.65,39.17,low
+Margarine,3.81,2.02,1.65,1.81,low
+Salad and cooking oils,10.89,15.27,17.69,20.22,low
+Shortening,6.26,8.51,6.69,5.82,low
+"Oils, other",0.26,0.83,0.89,0.84,low
+Caloric sweeteners,58.77,63.6,62.03,61.52,low
+"Nuts, total",4.59,6.01,5.35,5.3,low
+Peanuts,3.79,4.43,3.91,4.03,low
+Tree nuts,73.61,1.54,1.46,1.31,low
+"Fruit, total",114.7,108.17,105.49,103.23,high
+"Apples, total",25.66,23.79,24.49,25.29,high
+Apples ,14.44,13.07,12.37,12.36,high
+Apple juice1,11.13,10.94,12.06,12.38,high
+Bananas,11.13,10.51,9.5,10.11,high
+Berries,4.32,5.82,6.1,6.49,high
+Grapes,6.87,7.5,8.41,8.31,high
+Melons,4.84,4.08,4.44,4.67,high
+"Oranges, total",37.44,34.05,32.63,27.82,high
+Oranges ,3.75,2.7,2.7,2.26,high
+Orange juice2,33.72,31.25,29.89,25.56,high
+Other citrus fruits,7.53,5.37,4.07,4.33,high
+Stone fruits,7.01,7.12,6.26,7.15,high
+Tropical fruits,4.08,4.89,4.42,4.28,high
+"Vegetables, total",115.22,109.12,104.57,106.97,high
+"Brassica, total",6.36,6.51,6.73,7.14,high
+Broccoli and cauliflower,3.27,3.42,3.76,3.86,high
+Carrots,4.77,3.49,3.38,3.45,high
+Celery,2.22,1.96,1.84,2.25,high
+Cucumbers,1.43,1.58,1.66,1.34,high
+Green peas,1.77,1.43,1.27,1.43,high
+"Leafy vegetables, total",0.29,0.64,0.68,0.56,high
+Lettuce,8.52,10.13,8.47,7.85,high
+Onions,4.31,4.64,4.43,5.26,high
+Peppers,3.3,3.74,3.81,4.6,high
+Tomatoes,21.02,18.94,18.96,19.27,high
+Sweet corn,6.5,5.41,6.06,4.84,high
+Potatoes,34.34,31.2,27.73,29.78,high
+Snap beans,2.63,2.99,2.72,2.99,high
+"Legumes, dried",3.93,3.38,2.96,3.61,high
+"Dairy, total",177.45,177.77,175.21,174.81,high
+"Fluid milk, total3",119.04,114.69,111.68,110.84,high
+"Fluid milk, 1-percent fat3",15.15,15.37,15.36,14.72,high
+"Fluid milk, 2-percent fat3",42.14,37.8,36.89,35.84,high
+"Fluid milk, skim3",20.43,20.1,18.19,20.42,high
+"Fluid milk, whole3",31.97,28.32,26.98,25.04,high
+Butter,2.05,2.16,2.29,2.36,high
+Cheese,11.05,12.42,13.01,13.24,high
+Yogurt,4.33,6.28,7.86,8.29,high
+"Dairy, other",4.08,8.64,8.51,9.11,high
+"Meat, poultry, and fish, total",84.79,87.75,84.26,89.11,high
+"Meat, total",49.66,50.77,46.92,50.68,high
+Beef,28.14,27.42,26.03,27.94,high
+Pork,21.6,23.66,20.86,22.56,high
+"Poultry, total",30.1,30.39,29.83,31.91,high
+Chicken,23.25,23.68,23.87,25.12,high
+Turkey,7.06,6.87,6.4,7.31,high
+Finfish and shellfish,5.2,6.31,6.72,6.39,high
+Eggs4,11.52,13.67,13.07,12.91,high
+"Grains, total",95.28,89.8,87.83,93.33,high
+Corn flour,7.86,8.85,7.93,9.03,high
+Oat flour,2.93,2.81,2.78,2.97,high
+"Rice, dried",6.97,7.16,7.44,8.4,high
+Wheat flour,71.46,63.17,61.6,64.09,high
+"Fat and oils, total",28.84,37.53,37.46,39.43,high
+Margarine,4.23,2.31,1.85,1.98,high
+Salad and cooking oils,10.81,15.01,16.43,19.88,high
+Shortening,6.49,9.01,7.38,5.58,high
+"Oils, other",0.29,0.8,1.2,1.01,high
+Caloric sweeteners,56.63,56.44,55.84,54,high
+"Nuts, total",6.15,8.59,8.45,9.25,high
+Peanuts,4.63,5.6,6.2,5.99,high
+Tree nuts,74.91,3.04,2.27,3.23,high
